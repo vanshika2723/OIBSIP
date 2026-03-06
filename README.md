@@ -7,12 +7,19 @@ Tasks Included:
 2. Task 2 - Portfolio Website
 3. Task 3 - Temperature Converter
 4. Task 4 - Calculator
-5. Task 5 - To-Do List Application
+5.*Task 5– Tribute Page
+6. Task 6 - To-Do List Application
+7. Task 7 – Login Page with Authentication
+8. Task 8 – Pizza Delivery Application
 
 Technologies Used:
 - HTML
 - CSS
 - JavaScript
+- React
+- Mongodb
+- Node
+- Express
 
 ______________________________________________________________________________________________________________________________________________________________________________
 
@@ -77,12 +84,12 @@ This is a basic calculator web application created as part of the Oasis Infobyte
 
 
 ______________________________________________________________________________________________________________________________________________________________________________
-**Task 5– Tribute Page**
+#Task 5– Tribute Page
 
 Description:
 This project is a web page dedicated to a person of significance (e.g., a celebrity, historical figure, or personal inspiration). It showcases the use of HTML, CSS, and basic JavaScript to create a visually appealing and informative page.
 
-****Features:**
+##Features:
 Responsive design suitable for all devices
 
 Image and text sections highlighting achievements
@@ -106,12 +113,12 @@ This is a to-do list web application that helps users manage daily tasks efficie
 
 _____________________________________________________________________________________________________________________________________________________________________________
 
-**#Task 7 – Login Page with Authentication**
+#Task 7 – Login Page with Authentication**
 
 Description:
 A secure login system that supports role-based access for users and admins.
 
-**Features:**
+##Features:**
 
 Login and registration forms
 
@@ -124,12 +131,12 @@ Form validations and error handling
 Role-based redirection after login (User/Admin)
 ______________________________________________________________________________________________________________________________________________________________________________
 
-**Task 8 – Pizza Delivery Application**
+#Task 8 – Pizza Delivery Application**
 
 Description:
 A full-stack pizza ordering application with both user and admin functionalities.
 
-**Features:**
+##Features:
 
 Browse and select pizzas with various sizes and toppings
 
