@@ -7,7 +7,7 @@ Tasks Included:
 2. Task 2 - Portfolio Website
 3. Task 3 - Temperature Converter
 4. Task 4 - Calculator
-5.*Task 5– Tribute Page
+5. Task 5– Tribute Page
 6. Task 6 - To-Do List Application
 7. Task 7 – Login Page with Authentication
 8. Task 8 – Pizza Delivery Application
