@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #fff;
+            padding: 25px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Register</h2>
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password">
+    <button onclick="register()">Register</button>
+</div>
+
+<script>
+    function register() {
+        const user = document.getElementById("regUser").value;
+        const pass = document.getElementById("regPass").value;
+
+        if (user === "" || pass === "") {
+            alert("All fields required");
+            return;
+        }
+
+        localStorage.setItem("username", user);
+        localStorage.setItem("password", pass);
+        alert("Registration successful!");
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

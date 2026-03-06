@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📝 Modern To-Do App</title>
+
+    <!-- ================== CSS ================== -->
+    <style>
+        /* Basic Reset & Body */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f9f9f9, #e0eafc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .container:hover { transform: translateY(-3px); }
+
+        /* Headings */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #555;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Input Section */
+        .input-section {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0,123,255,0.2);
+        }
+        button.add-btn {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button.add-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Tasks List */
+        ul { list-style: none; padding: 0; }
+        li {
+            background: #f7f9fc;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+        li:hover { background: #e9f0ff; }
+
+        /* Task Text */
+        .task-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+        .task-text.completed {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Task Meta */
+        .task-meta {
+            font-size: 11px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        /* Action Buttons */
+        .actions button {
+            margin-left: 6px;
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .actions button.complete {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .actions button.complete:hover {
+            background-color: #218838;
+        }
+        .actions button.delete {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .actions button.delete:hover {
+            background-color: #c82333;
+        }
+        .actions button.edit {
+            background-color: #ffc107;
+            color: #333;
+        }
+        .actions button.edit:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📝 Modern To-Do List</h1>
+
+    <!-- Input Section -->
+    <div class="input-section">
+        <input type="text" id="taskInput" placeholder="Add a new task..." />
+        <button class="add-btn" onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- Pending Tasks -->
+    <div class="section">
+        <h2>⏳ Pending Tasks</h2>
+        <ul id="pendingTasks"></ul>
+    </div>
+
+    <!-- Completed Tasks -->
+    <div class="section">
+        <h2>✅ Completed Tasks</h2>
+        <ul id="completedTasks"></ul>
+    </div>
+</div>
+
+<!-- ================== JavaScript ================== -->
+<script>
+    let tasks = [];
+
+    function addTask() {
+        const input = document.getElementById("taskInput");
+        const text = input.value.trim();
+        if (!text) return;
+
+        tasks.push({
+            id: Date.now(),
+            text: text,
+            completed: false,
+            createdAt: new Date(),
+            completedAt: null
+        });
+
+        input.value = "";
+        renderTasks();
+    }
+
+    function toggleTask(id) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                task.completed = !task.completed;
+                task.completedAt = task.completed ? new Date() : null;
+            }
+        });
+        renderTasks();
+    }
+
+    function editTask(id) {
+        const task = tasks.find(t => t.id === id);
+        const updatedText = prompt("Edit task:", task.text);
+        if (updatedText && updatedText.trim() !== "") {
+            task.text = updatedText.trim();
+            renderTasks();
+        }
+    }
+
+    function deleteTask(id) {
+        tasks = tasks.filter(task => task.id !== id);
+        renderTasks();
+    }
+
+    function renderTasks() {
+        const pendingList = document.getElementById("pendingTasks");
+        const completedList = document.getElementById("completedTasks");
+
+        pendingList.innerHTML = "";
+        completedList.innerHTML = "";
+
+        tasks.forEach(task => {
+            const li = document.createElement("li");
+
+            li.innerHTML = `
+                <div>
+                    <div class="task-text ${task.completed ? 'completed' : ''}">
+                        ${task.text}
+                    </div>
+                    <div class="task-meta">
+                        Added: ${task.createdAt.toLocaleString()}
+                        ${task.completedAt ? `<br>Completed: ${task.completedAt.toLocaleString()}` : ""}
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="complete" onclick="toggleTask(${task.id})">
+                        ${task.completed ? "Undo" : "Complete"}
+                    </button>
+                    <button class="edit" onclick="editTask(${task.id})">Edit</button>
+                    <button class="delete" onclick="deleteTask(${task.id})">Delete</button>
+                </div>
+            `;
+
+            task.completed ? completedList.appendChild(li) : pendingList.appendChild(li);
+        });
+    }
+</script>
+
+</body>
+</html>

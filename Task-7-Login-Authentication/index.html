@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #fff;
+            padding: 25px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <a href="register.html">Create Account</a>
+</div>
+
+<script>
+    function login() {
+        const user = document.getElementById("loginUser").value;
+        const pass = document.getElementById("loginPass").value;
+
+        const storedUser = localStorage.getItem("username");
+        const storedPass = localStorage.getItem("password");
+
+        if (user === storedUser && pass === storedPass) {
+            localStorage.setItem("loggedIn", "true");
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Invalid credentials");
+        }
+    }
+</script>
+
+</body>
+</html>

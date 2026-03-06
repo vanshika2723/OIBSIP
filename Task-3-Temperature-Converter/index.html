@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animated Temperature Converter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .converter {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 330px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            animation: popIn 0.8s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102,126,234,0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .result, .error {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h2>Temperature Converter</h2>
+
+    <input type="text" id="tempInput" placeholder="Enter temperature">
+
+    <select id="unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+
+    <button onclick="convertTemp()">Convert</button>
+
+    <div class="result" id="result"></div>
+    <div class="error" id="error"></div>
+</div>
+
+<script>
+    function convertTemp() {
+        const input = document.getElementById("tempInput").value;
+        const unit = document.getElementById("unit").value;
+        const result = document.getElementById("result");
+        const error = document.getElementById("error");
+
+        result.classList.remove("show");
+        error.classList.remove("show");
+
+        result.textContent = "";
+        error.textContent = "";
+
+        if (input === "" || isNaN(input)) {
+            error.textContent = "Please enter a valid number!";
+            error.classList.add("show");
+            return;
+        }
+
+        const temp = parseFloat(input);
+        let convertedTemp = "";
+        let unitLabel = "";
+
+        if (unit === "celsius") {
+            convertedTemp = (temp * 9/5) + 32;
+            unitLabel = "°F";
+        } 
+        else if (unit === "fahrenheit") {
+            convertedTemp = (temp - 32) * 5/9;
+            unitLabel = "°C";
+        } 
+        else if (unit === "kelvin") {
+            convertedTemp = temp - 273.15;
+            unitLabel = "°C";
+        }
+
+        setTimeout(() => {
+            result.textContent = `Converted Temperature: ${convertedTemp.toFixed(2)} ${unitLabel}`;
+            result.classList.add("show");
+        }, 100);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div style="
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    min-height: 100vh;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+">
+
+    <div style="
+        max-width: 800px;
+        margin: auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    ">
+
+        <h1 style="text-align:center;">🎓 Welcome to OIBSIP Internship</h1>
+
+        <p style="text-align:center; font-size: 16px;">
+            👋 Hello! You have successfully logged in to the secured dashboard.
+        </p>
+
+        <hr style="margin: 25px 0;">
+
+        <h2>📌 About This Project</h2>
+        <p>
+            This dashboard is part of the <strong>Oasis Infobyte Internship Program</strong>.
+            The project demonstrates a simple login authentication system using
+            HTML, CSS, and JavaScript with secure access control.
+        </p>
+
+        <h2>✨ Key Features</h2>
+        <p>
+            ✅ User Registration & Login <br>
+            🔐 Secured Dashboard Access <br>
+            🎨 Clean and User-Friendly Interface <br>
+            💻 Frontend Implementation using JavaScript
+        </p>
+
+        <h2>📚 Learning Outcome</h2>
+        <p>
+            Through this internship task, I gained hands-on experience in building
+            authentication workflows, managing user sessions on the frontend,
+            and designing professional web dashboards.
+        </p>
+
+        <div style="text-align:center; margin-top:30px;">
+            <img 
+                src="https://user-images.githubusercontent.com/91726340/223084103-c04326c3-f9cc-437d-8a85-abb0865400ec.png" 
+                alt="OIBSIP Dashboard"
+                style="width:100%; max-width:600px; border-radius:8px;"
+            >
+        </div>
+
+        <p style="text-align:center; margin-top:25px;">
+            🙏 Thank you <strong>Oasis Infobyte</strong> for this learning opportunity.
+        </p>
+
+    </div>
+</div>
+
+
+<button onclick="logout()">Logout</button>
+
+<script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "index.html";
+    }
+
+    function logout() {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

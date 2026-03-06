@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+/* Calculator box */
+.calculator {
+  padding: 20px;
+  border-radius: 16px;
+  background: #2d2f38;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input box */
+.calculator input {
+  width: 320px;
+  border: none;
+  padding: 24px;
+  margin: 10px;
+  background: transparent;
+  font-size: 40px;
+  text-align: right;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.calculator input::placeholder {
+  color: #ffffff;
+}
+
+/* Buttons container */
+.calculator-btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Button rows */
+.calculator-btn-rows {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Buttons */
+.calculator-btn-rows button {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 14px;
+  background: #2d2f38;
+  color: #ffffff;
+  font-size: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+/* Operator buttons */
+.calculator-btn-rows .operator {
+  color: #6ee4d5;
+}
+
+/* Hover effect */
+.calculator-btn-rows button:hover {
+  background-color: #34363f;
+}
