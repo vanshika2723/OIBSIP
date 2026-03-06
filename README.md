@@ -113,12 +113,12 @@ This is a to-do list web application that helps users manage daily tasks efficie
 
 _____________________________________________________________________________________________________________________________________________________________________________
 
-#Task 7 – Login Page with Authentication**
+#Task 7 – Login Page with Authentication
 
 Description:
 A secure login system that supports role-based access for users and admins.
 
-##Features:**
+##Features:
 
 Login and registration forms
 
@@ -131,7 +131,7 @@ Form validations and error handling
 Role-based redirection after login (User/Admin)
 ______________________________________________________________________________________________________________________________________________________________________________
 
-#Task 8 – Pizza Delivery Application**
+#Task 8 – Pizza Delivery Application
 
 Description:
 A full-stack pizza ordering application with both user and admin functionalities.
